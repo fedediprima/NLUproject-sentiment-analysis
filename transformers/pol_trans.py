@@ -38,6 +38,7 @@ def main(subj_filter):
         neg = neg[:30]
     
     if subj_filter:
+        print("Filtering out objective sentences...")
         # initialize and load trained subjectivity detector on cuda device
         subj_classifier = BertForSequenceClassification(BertConfig())
         subj_classifier.load_state_dict(torch.load("/content/drive/MyDrive/weights/trans_subj.pt"))
@@ -62,6 +63,7 @@ def main(subj_filter):
         # update pos and neg list with the filtred ones
         pos = subj_pos
         neg = subj_neg
+        print("... Done")
     
     # Compute lebels and split in train/test set
     labels = [0] * len(neg) + [1] * len(pos)
@@ -144,19 +146,16 @@ def main(subj_filter):
     plot_loss_accuracy(losses_train, losses_test, accuracies_train, accuracies_test)
 
     # save the weights of the best model
+    print("Saving weights..")
     if not os.path.exists(os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights")):
         os.mkdir(os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights"))
     torch.save(best_model.state_dict(), os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights/trans_pol.pt"))
-    print("Model saved...")
+    print("Model saved")
 
     # some examples of subjectivity/objectivity prediction using our best model
-    print("\nInput: ", " ".join(flatten(X_test[100])))
-    print("Correct Label: ", y_test[100])
-    predict_polarity_TRANS(X_test[100], best_model, tokenizer, device)
-
-    print("Input: ", " ".join(flatten(X_test[40])))
-    print("Correct Label: ", y_test[40])
-    predict_polarity_TRANS(X_test[40], best_model, tokenizer, device)
+    print("\nInput: ", " ".join(flatten(X_test[5])))
+    print("Correct Label: ", y_test[5])
+    predict_polarity_TRANS(X_test[5], best_model, tokenizer, device)
 
 if __name__ == "__main__":
     main(subj_filter=True)

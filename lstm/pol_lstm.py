@@ -36,6 +36,7 @@ def main(subj_filter):
     
     # filter flag to decide whether or not remove objective sentence
     if subj_filter:
+        print("Filtering out objective sentences...")
         # Load w2id subjectivity dictionary
         with open(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights/w2id_subj_lstm.pkl"), 'rb') as f:
             w2id_subj = pickle.load(f)
@@ -61,6 +62,7 @@ def main(subj_filter):
         # update pos and neg list with the filtred ones
         pos = subj_pos
         neg = subj_neg
+        print("... Done")
         
     # Compute lebels and split in train/test set
     labels = [0] * len(neg) + [1] * len(pos)
@@ -148,6 +150,7 @@ def main(subj_filter):
     plot_loss_accuracy(losses_train, losses_test, accuracies_test, accuracies_train)
     
     # save the weights and w2id of the best model
+    print("Saving weights..")
     if not os.path.exists(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights")):
         os.mkdir(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights"))
     torch.save(best_model.state_dict(), os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights/lstm_pol.pt"))
@@ -156,9 +159,9 @@ def main(subj_filter):
     print("Model saved")
 
     # some examples of polarity prediction using our best model
-    print("Input: ", X_test[100])
-    print("Correct Label: ", y_test[100])
-    predict_polarity_LSTM(X_train[100], net, w2id, device)
+    print("Input: ", X_test[5])
+    print("Correct Label: ", y_test[5])
+    predict_polarity_LSTM(X_train[5], net, w2id, device)
 
 if __name__ == "__main__":
     main(subj_filter = True)

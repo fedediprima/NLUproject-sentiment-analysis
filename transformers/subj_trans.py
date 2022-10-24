@@ -115,19 +115,16 @@ def main():
     plot_loss_accuracy(losses_train, losses_test, accuracies_train, accuracies_test)
 
     # save the weights of the best model
+    print("Saving weights..")
     if not os.path.exists(os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights")):
         os.mkdir(os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights"))
     torch.save(best_model.state_dict(), os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights/trans_subj.pt"))
-    print("Model saved...")
+    print("Model saved")
 
     # some examples of subjectivity/objectivity prediction using our best model
-    print("\nInput: ", " ".join(X_test[100]))
-    print("Correct Label: ", y_test[100])
-    predict_subjectivity_TRANS(X_test[100], best_model, tokenizer, device)
-
-    print("Input: ", " ".join(X_test[40]))
-    print("Correct Label: ", y_test[40])
-    predict_subjectivity_TRANS(X_test[40], best_model, tokenizer, device)
+    print("\nInput: ", " ".join(X_test[5]))
+    print("Correct Label: ", y_test[5])
+    predict_subjectivity_TRANS(X_test[5], best_model, tokenizer, device)
 
 if __name__ == "__main__":
     main()

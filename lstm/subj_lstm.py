@@ -120,21 +120,18 @@ def main():
     plot_loss_accuracy(losses_train, losses_test, accuracies_train, accuracies_test)
 
     # save the weights and w2id of the best model
+    print("Saving weights..")
     if not os.path.exists(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights")):
         os.mkdir(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights"))
     torch.save(best_model.state_dict(), os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights/lstm_subj.pt"))
     with open(os.path.join(ROOT_DIR_PATH, LSTM_DIR_PATH, "weights/w2id_subj_lstm.pkl"), "wb") as tf:
         pickle.dump(w2id,tf)
-    print("Model saved...")
+    print("Model saved")
 
     # some examples of subjectivity/objectivity prediction using our best model
-    print("\nInput: ", " ".join(X_test[100]))
-    print("Correct Label: ", y_test[100])
-    predict_subjectivity_LSTM(X_test[100], best_model, w2id, device)
-
-    print("Input: ", " ".join(X_test[40]))
-    print("Correct Label: ", y_test[40])
-    predict_subjectivity_LSTM(X_test[40], best_model, w2id, device)
+    print("\nInput: ", " ".join(X_test[5]))
+    print("Correct Label: ", y_test[5])
+    predict_subjectivity_LSTM(X_test[5], best_model, w2id, device)
 
 if __name__ == "__main__":
     main()
