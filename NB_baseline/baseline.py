@@ -84,13 +84,13 @@ def main(subj_filter):
 
     # subjectivity classifier using simple Naive Bayes Classification
     subj_accuracy, subj_f1, subj_classifier, subj_vectorizer = subjectivity_classifier()
-    print(f"Accuracy on Naive Bayes subjectivity classification: {round(subj_accuracy*100, 3)}")
-    print(f"F1 score on Naive Bayes subjectivity classification: {round(subj_f1, 3)}")
+    print(f"Accuracy on Naive Bayes subjectivity classification: {round(subj_accuracy*100, 4)}")
+    print(f"F1 score on Naive Bayes subjectivity classification: {round(subj_f1, 4)}")
 
     # polarity classifier using simple Naive Bayes Classification and removing objective sentences (filter set to True by default)
     polarity_accuracy, polarity_f1 = polarity_classifier(subj_classifier, subj_vectorizer, subj_filter)
-    print(f"Accuracy on Naive Bayes polarity classification: {round(polarity_accuracy*100, 3)}")
-    print(f"F1 score on Naive Bayes polarity classification: {round(polarity_f1, 3)}")
+    print(f"Accuracy on Naive Bayes polarity classification: {round(polarity_accuracy*100, 4)}")
+    print(f"F1 score on Naive Bayes polarity classification: {round(polarity_f1, 4)}")
 
 if __name__ == "__main__":
-    main(subj_filter = True)
+    main(subj_filter = False)

@@ -33,19 +33,6 @@ class SentimentLSTM(nn.Module):
       packed_output, (hidden, cell) = self.lstm(packed_input)
       output, _ = pad_packed_sequence(packed_output, batch_first=True)
 
-      # FIRST METHOD, USE THE HIDDEN REPRESENTATION FOR CLASSIFICATION
-
-      # context vector which are the last hidden states of the LSTM, we want the final layer forward and backward hidden states
-      # #hidden = [num layers * num directions, batch size, hid dim]
-      #if self.lstm.bidirectional:
-      #   context_vector = torch.cat([hidden[-1,:,:], hidden[-2,:,:]], dim=1)
-      #else:
-      #  context_vector = hidden[-1,:]
-
-
-      # SECOND METHOD, USE THE SUMMED LSTM OUTPUT FOR CLASSIFICATION (better performances)
-
-      # output = [batch size, seq len, hidden dim * n directions]
       # the output is summed up and sent to the classifier (fully connected)
       context_vector = output.sum(dim=1)
       
