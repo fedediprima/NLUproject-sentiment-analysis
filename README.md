@@ -1,6 +1,6 @@
 # Natural Language Understanding Sentiment Analysis Project
 This is the code for the final project of the "Natural Language Understanding" course - MSc in Artificial Intelligence Systems - University of Trento.
-I recommend to read the project's report `NLU_project_report.pdf` before running the code.
+I suggest to read the project's report `NLU_project_report.pdf` before running the code.
 
 ## Environment
 The code is written in Python 3.9.12 (with other version is not guaranteed to work) and has been developed using a conda environment:
@@ -11,9 +11,16 @@ $ conda env create -n nlu --file nlu_env.yml
 
 I have also exported the requirements for a pip virtual environment in the file `requirements.txt` but i recommend to use conda.
 
-## spigazione CARTELLE e FILE
+## Project structure
+The project folder is organized in this way:
+* `datasets_analysis.py` file, is used to analyze the main statistics of the two dataset used in this project, **subjetivity** and **movie_reviews**.
+* `parameters.py` file in which you can find the most important parameters for all the models, i.e. Number of epochs, learning rates, batch sizes ecc..
+* in the file `functions.py`, there are the utility functions used to train the models.
+* Then we have a folder for each model: **NB_baseline**, **lstm**, **cnn** and **transformers** in which there are the real training code and the structure of the used architectures. 
 
-## Weights
+## Saved weights
+I decided not to include the weights here for memory reasons, anyway you can find the trained weights for all the models at this [link](https://drive.google.com/drive/u/1/folders/1GSa39jmwXNyAtqk9iuZ6C5PS9RDvDbAf.
+Also the "Word to Id" vocabularies are available in the same folder.
 
 
 ## Run the code
@@ -37,7 +44,7 @@ For the polarity classifier, use:
 ```bash
 $ python lstm/pol_lstm.py
 ```
-Weights of the best achieved model are stored in `lstm/weigths` folder with the name `lstm_subj.pt` or `lstm_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_lstm.pkl` or `w2id_pol_lstm.pkl`. \
+Weights of the best achieved model are stored in `lstm/weigths` folder with the name `lstm_subj.pt` or `lstm_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_lstm.pkl` or `w2id_pol_lstm.pkl`. 
 
 Set the `subj_filter` flag to True for filtering out objective sentences.
 
@@ -53,7 +60,7 @@ For the polarity classifier, use:
 ```bash
 $ python cnn/pol_cnn.py
 ```
-Weights of the best achieved model are stored in `cnn/weigths` folder with the name `cnn_subj.pt` or `cnn_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_cnn.pkl` or `w2id_pol_cnn.pkl`. \
+Weights of the best achieved model are stored in `cnn/weigths` folder with the name `cnn_subj.pt` or `cnn_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_cnn.pkl` or `w2id_pol_cnn.pkl`. 
 
 Set the `subj_filter` flag to True for filtering out objective sentences.
 
@@ -69,7 +76,7 @@ For the polarity classifier, use:
 ```bash
 $ python cnn/pol_trans.py
 ```
-Weights of the best achieved model are stored in `transformers/weigths` folder with the name `trans_subj.pt` or `trans_pol.pt` respectively. \
+Weights of the best achieved model are stored in `transformers/weigths` folder with the name `trans_subj.pt` or `trans_pol.pt` respectively. 
 
 Set the `subj_filter` flag to True for filtering out objective sentences.
 
