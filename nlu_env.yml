@@ -1,0 +1,15 @@
+name: nlu
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - nltk
+  - jupyter
+  - spacy
+  - scikit-learn
+  - pandas
+  - pytorch
+  - transformers
+  - matplotlib
+prefix: /Users/federicodiprima/opt/anaconda3/envs/nlu

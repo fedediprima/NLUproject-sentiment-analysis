@@ -41,7 +41,7 @@ def main(subj_filter):
         print("Filtering out objective sentences...")
         # initialize and load trained subjectivity detector on cuda device
         subj_classifier = BertForSequenceClassification(BertConfig())
-        subj_classifier.load_state_dict(torch.load("/content/drive/MyDrive/weights/trans_subj.pt"))
+        subj_classifier.load_state_dict(torch.load(os.path.join(ROOT_DIR_PATH, TRANS_DIR_PATH, "weights/trans_subj.pt")))
         subj_classifier.to(device)
 
         # pretrained bert tokenizer 
