@@ -9,7 +9,7 @@ The code is written in Python 3.9.12 (with other version is not guaranteed to wo
 $ conda env create -n nlu --file nlu_env.yml
 ```
 
-I have also included the requirements for a pip virtual environment in the file `requirements.txt` but i recommend to use conda.
+I have also included the requirements for a pip virtual environment in the file `requirements.txt` but i suggest to use conda.
 
 ## Project structure
 The project folder is organized in this way:
