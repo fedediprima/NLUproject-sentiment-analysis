@@ -22,8 +22,6 @@ The project folder is organized in this way:
     * `train_functions_*.py` files contains effectively the train and evaluation loops.
     * `subj_*.py` and `pol_*.py` are the files to run to start the training of the model, for subjectivity and polarity classifier respectively.
 >**NB_baseline** folder has a completely different structure, it contains all the elements needed for training both classifiers in one single file `baseline.py`.
-* In the **images** folder we can see the accuracies evolution during training for each experiment and the structure of the proposed models.
-
 
 ## Saved weights
 I decided not to include the weights here for memory reasons, anyway you can find the trained weights for all the models at this [link](https://drive.google.com/drive/u/1/folders/1GSa39jmwXNyAtqk9iuZ6C5PS9RDvDbAf.
@@ -89,3 +87,6 @@ Weights of the best achieved model are stored in `transformers/weigths` folder w
 Set `subj_filter=True` for filtering out objective sentences.
 
 >Be sure to train the subjectivity detector first, and then to train the polarity classifier if you want to use the filter, otherwise it does not work.
+
+## Images folder
+In the **images** folder we can see the accuracies evolution during training for each experiment and the structure of the proposed models.
