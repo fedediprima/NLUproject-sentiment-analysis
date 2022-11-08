@@ -21,7 +21,8 @@ The project folder is organized in this way:
     * In the file `datasets.py` there are the costumized datasets objects ovewriting the pyTorch Dataset class.
     * `train_functions_*.py` files contains effectively the train and evaluation loops.
     * `subj_*.py` and `pol_*.py` are the files to run to start the training of the model, for subjectivity and polarity classifier respectively.
->**NB_baseline** folder has a completely different structure, it contains all the elements needed in one single file `baseline.py`.
+>**NB_baseline** folder has a completely different structure, it contains all the elements needed for training both classifiers in one single file `baseline.py`.
+* In the **images** folder we can see the accuracies evolution during training for each experiments and the structure of the proposed models.
 
 
 ## Saved weights
