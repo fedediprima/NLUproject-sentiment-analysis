@@ -89,4 +89,4 @@ Set `subj_filter=True` for filtering out objective sentences.
 >Be sure to train the subjectivity detector first, and then to train the polarity classifier if you want to use the filter, otherwise it does not work.
 
 ## Images folder
-In the **images** folder we can see the accuracies evolution during training for each experiment and the structure of the proposed models.
+In the **images** folder we can see the train and test accuracy evolution during training for each experiment and the structure of the proposed models.
