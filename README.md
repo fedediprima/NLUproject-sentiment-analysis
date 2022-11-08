@@ -9,14 +9,20 @@ The code is written in Python 3.9.12 (with other version is not guaranteed to wo
 $ conda env create -n nlu --file nlu_env.yml
 ```
 
-I have also exported the requirements for a pip virtual environment in the file `requirements.txt` but i recommend to use conda.
+I have also included the requirements for a pip virtual environment in the file `requirements.txt` but i recommend to use conda.
 
 ## Project structure
 The project folder is organized in this way:
 * `datasets_analysis.py` file, is used to analyze the main statistics of the two dataset used in this project, **subjetivity** and **movie_reviews**.
 * `parameters.py` file in which you can find the most important parameters for all the models, i.e. Number of epochs, learning rates, batch sizes ecc..
-* in the file `functions.py`, there are the utility functions used to train the models.
-* Then we have a folder for each model: **NB_baseline**, **lstm**, **cnn** and **transformers** in which there are the real training code and the structure of the used architectures. 
+* In the file `functions.py`, there are the utility functions used to train the models.
+* Then we have a folder for each model: **NB_baseline**, **lstm**, **cnn** and **transformers** in which there are the real training code and the structure of the used architectures:
+    * `model.py` describe the structure of the model used (not present in the transformers folder, because i used a pretrained model).
+    * In the file `datasets.py` there are the costumized datasets objects ovewriting the pyTorch Dataset class.
+    * `train_functions_*.py` files contains effectively the train and evaluation loops.
+    * `subj_*.py` and `pol_*.py` are the files to run to start the training of the model, for subjectivity and polarity classifier respectively.
+>**NB_baseline** folder has a completely different structure, it contains all the elements needed in one single file `baseline.py`.
+
 
 ## Saved weights
 I decided not to include the weights here for memory reasons, anyway you can find the trained weights for all the models at this [link](https://drive.google.com/drive/u/1/folders/1GSa39jmwXNyAtqk9iuZ6C5PS9RDvDbAf.
@@ -46,7 +52,7 @@ $ python lstm/pol_lstm.py
 ```
 Weights of the best achieved model are stored in `lstm/weigths` folder with the name `lstm_subj.pt` or `lstm_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_lstm.pkl` or `w2id_pol_lstm.pkl`. 
 
-Set the `subj_filter` flag to True for filtering out objective sentences.
+Set `subj_filter=True` for filtering out objective sentences.
 
 >Be sure to train the subjectivity detector first, and then to train the polarity classifier if you want to use the filter, otherwise it does not work.
 
@@ -62,7 +68,8 @@ $ python cnn/pol_cnn.py
 ```
 Weights of the best achieved model are stored in `cnn/weigths` folder with the name `cnn_subj.pt` or `cnn_pol.pt` respectively. Also the "Word to Id" vocabulary is saved in the same folder with the name `w2id_subj_cnn.pkl` or `w2id_pol_cnn.pkl`. 
 
-Set the `subj_filter` flag to True for filtering out objective sentences.
+Set `subj_filter=True` for filtering out objective sentences.
+
 
 >Be sure to train the subjectivity detector first, and then to train the polarity classifier if you want to use the filter, otherwise it does not work.
 
@@ -78,6 +85,6 @@ $ python cnn/pol_trans.py
 ```
 Weights of the best achieved model are stored in `transformers/weigths` folder with the name `trans_subj.pt` or `trans_pol.pt` respectively. 
 
-Set the `subj_filter` flag to True for filtering out objective sentences.
+Set `subj_filter=True` for filtering out objective sentences.
 
 >Be sure to train the subjectivity detector first, and then to train the polarity classifier if you want to use the filter, otherwise it does not work.
